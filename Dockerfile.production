@@ -1,0 +1,8 @@
+FROM bitnami/wordpress:5.9.1
+#USER root
+#RUN apt-get update && apt-get install rsync -y
+
+USER 1001
+WORKDIR /bitnami/wordpress/
+COPY --chown=1001:root wp-content /tmp/wp-content 
+COPY --chown=1001:root wp-config.production.php /tmp/wp-config.php
