@@ -16,10 +16,7 @@ jobs:
 
     steps:
       - name: Setup sonarqube
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        uses: warchant/setup-sonar-scanner@v1
 
       - name: 'Checkout repository on branch: ${{ github.REF }}'
         uses: actions/checkout@v2
