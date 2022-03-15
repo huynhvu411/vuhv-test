@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
     branches:
-      - main
+      - master
       - 'JAHIA-[0-9]-[0-9]-[0-9]-X-BRANCH'
       - '[0-9]_[0-9]_x'
       - '[0-9]-[0-9]-X-BRANCH'
@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Setup sonarqube
-        uses: warchant/setup-sonar-scanner@v1
+        uses: sonarsource/sonarqube-scan-action@master
 
       - name: 'Checkout repository on branch: ${{ github.REF }}'
         uses: actions/checkout@v2
@@ -37,3 +37,6 @@ jobs:
           -Dsonar.pullrequest.key=${{ github.event.number }}
           -Dsonar.pullrequest.branch=${{ github.HEAD_REF }}
           -Dsonar.pullrequest.base=${{ github.BASE_REF }}
+          -Dsonar.pullrequest.github.repository=${{ github.repository }}
+          -Dsonar.scm.provider=git
+          -Dsonar.java.binaries=/tmp
