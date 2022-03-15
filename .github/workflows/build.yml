@@ -3,9 +3,7 @@ on:
   # a pull request. 
   push:
     branches:
-      - master
-  pull_request:
-      types: [opened, synchronize, reopened]
+      - main
 
 name: Main Workflow
 jobs:
