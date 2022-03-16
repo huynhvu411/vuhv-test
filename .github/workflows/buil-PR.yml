@@ -22,7 +22,7 @@ jobs:
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
         #sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner
         mkdir change_file
-        for i in `git diff --name-only HEAD^..HEAD`; do j=$j+$i; done
+        for i in `git diff --name-only HEAD^..HEAD`; do j="$j, $i"; done
         sed -i "s/file-changed/${j}/" sonar-project.properties
         cat sonar-project.properties
         ls -la
