@@ -26,7 +26,7 @@ jobs:
 
         ls -la
         ls -la change_file
-        sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner \
+        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
         -Dsonar.sources=change_file \
         -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.login=$SONAR_TOKEN
