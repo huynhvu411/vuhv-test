@@ -18,8 +18,8 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       run: |
-        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null
-        unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
+        unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
         #sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner
         ls -la
         mkdir change_file
