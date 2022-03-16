@@ -23,7 +23,7 @@ jobs:
         #sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner
         mkdir change_file
         for i in `git diff --name-only HEAD^..HEAD`; do j=$j+$i; done
-        sed -i '/file-changed/$j/' sonar-project.properties
+        sed -i -e '/file-changed/${j}/' sonar-project.properties
         cat sonar-project.properties
         ls -la
         ls -la change_file
