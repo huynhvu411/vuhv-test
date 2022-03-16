@@ -22,7 +22,6 @@ jobs:
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip
         #sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner
         ls -la
-        git status
-        #git diff --name-only vuhv
+        git diff --name-only HEAD^..HEAD
 
         
