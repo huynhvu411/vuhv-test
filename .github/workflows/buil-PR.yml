@@ -26,7 +26,7 @@ jobs:
 
         ls -la
         ls -la change_file
-        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner 
+        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner  \
         -Dsonar.inclusions=index.php \
         -Dsonar.host.url=http://18.141.207.98:9000 \
         -Dsonar.login=$SONAR_TOKEN
