@@ -28,7 +28,7 @@ jobs:
         ls -la change_file
         sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
         -Dsonar.sources=change_file \
-        -Dsonar.host.url=$SONAR_HOST_URL \
+        -Dsonar.host.url=http://18.141.207.98:9000 \
         -Dsonar.login=$SONAR_TOKEN
 
         
