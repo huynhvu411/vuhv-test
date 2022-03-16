@@ -25,6 +25,7 @@ jobs:
         for i in `git diff --name-only HEAD^..HEAD`; do cp -ra $i change_file/; done
 
         ls -la
+        ls -la change_file
         # sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner \
         # -Dsonar.projectKey=bitnami \
         # -Dsonar.sources=change_file \
