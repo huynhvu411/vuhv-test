@@ -22,6 +22,14 @@ jobs:
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null
         #sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner
         ls -la
-        git diff --name-only HEAD^..HEAD > tmp.txt
+        mkdir change_file
+        for i in `git diff --name-only HEAD^..HEAD`
+        do mv $i change_file/
+        done
+        # sonar-scanner-cli-4.7.0.2747-linux/bin/sonar-scanner \
+        # -Dsonar.projectKey=bitnami \
+        # -Dsonar.sources=change_file \
+        # -Dsonar.host.url=http://18.141.207.98:9000 \
+        # -Dsonar.login=f58fa35b250c62002ecf86a8a7d9ea1f19a839ba
 
         
