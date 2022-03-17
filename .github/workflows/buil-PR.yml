@@ -21,7 +21,7 @@ jobs:
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
 
-        for i in `git diff --name-only ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}`; do j="$j, $i"; done
+        for i in `git diff --name-only HEAD^..HEAD`; do j="$j, $i"; done
         echo "sonar.inclusions=${j}" >> sonar-project.properties
         cat sonar-project.properties
         ls -la
