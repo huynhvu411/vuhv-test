@@ -25,7 +25,6 @@ jobs:
         filesChanged=$(echo ${filesChanged} | sed 's/\ /,\ /g')
 
         cat <<EOL > sonar-project.properties
-        echo "sonar.inclusions=${j}" >> sonar-project.properties
         sonar.projectKey=huynhvu411_vuhv-test
         sonar.sources=${filesChanged}
         EOF
