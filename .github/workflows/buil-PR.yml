@@ -24,7 +24,7 @@ jobs:
         filesChanged=`git diff --name-only HEAD^..HEAD`
         filesChanged=$(echo ${filesChanged} | sed 's/\ /,\ /g')
 
-        cat <<EOL > sonar-project.properties
+        cat <<EOF > sonar-project.properties
         sonar.projectKey=huynhvu411_vuhv-test
         sonar.sources=${filesChanged}
         EOF
