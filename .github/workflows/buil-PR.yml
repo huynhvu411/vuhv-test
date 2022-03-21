@@ -21,7 +21,7 @@ jobs:
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
 
-        filesChanged = `git diff --name-only HEAD^..HEAD`
+        filesChanged=`git diff --name-only HEAD^..HEAD`
         filesChanged=$(echo ${filesChanged} | sed 's/\ /,\ /g')
 
         cat <<EOL > sonar-project.properties
