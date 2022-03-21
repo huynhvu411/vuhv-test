@@ -1,0 +1,32 @@
+on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request. 
+  pull_request:
+      types: [opened, synchronize, reopened]
+
+name: Main Workflow
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: |
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
+        unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
+
+        for i in `git diff --name-only HEAD^..HEAD`; do j="$j, $i"; done
+        echo "sonar.inclusions=${j}" >> sonar-project.properties
+        cat sonar-project.properties
+        ls -la
+        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner  \
+        -Dsonar.host.url=http://18.141.207.98:9000 \
+        -Dsonar.login=$SONAR_TOKEN
+
+        
