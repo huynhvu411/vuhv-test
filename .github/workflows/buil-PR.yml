@@ -21,12 +21,17 @@ jobs:
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
         unzip sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
 
-        for i in `git diff --name-only HEAD^..HEAD`; do j="$j, $i"; done
+        filesChanged = `git diff --name-only HEAD^..HEAD`
+        filesChanged=$(echo ${filesChanged} | sed 's/\ /,\ /g')
+
+        cat <<EOL > sonar-project.properties
         echo "sonar.inclusions=${j}" >> sonar-project.properties
-        cat sonar-project.properties
-        ls -la
-        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner  \
-        -Dsonar.host.url=http://18.141.207.98:9000 \
-        -Dsonar.login=$SONAR_TOKEN
+        sonar.projectKey=huynhvu411_vuhv-test
+        sonar.sources=${filesChanged}
+        EOF
+
+        cat sonar-project.properties        
+
+        sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner 
 
         
