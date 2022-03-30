@@ -18,7 +18,7 @@ jobs:
           filesChanged=$(echo ${filesChanged} | sed 's/\ /,\ /g')
 
           cat <<EOF > sonar-project.properties
-          sonar.projectKey=${{ secrets.SONAR_PROJECTKEY }}
+          sonar.projectKey=vuhv-test
           sonar.sources=${filesChanged}
           EOF
 
